@@ -1,7 +1,7 @@
 class Population():
 
     def __init__(self):
-        pass
+        self.individuals = individuals
         
     def initialise(self):
         pass
