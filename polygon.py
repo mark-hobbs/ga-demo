@@ -55,4 +55,5 @@ class Polygon:
             left=False,
             right=False,
             labelbottom=False,
-            labelleft=False)
+            labelleft=False,
+        )
