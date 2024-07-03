@@ -77,8 +77,10 @@ class Animation:
         objects)
         """
         num_frames = len(self.frames)
+        num_subplots = len(self.frames[0])
+
         ncols = 5
-        nrows = (num_frames + ncols - 1) // ncols
+        nrows = (num_subplots + ncols - 1) // ncols
 
         self.fig, self.ax = plt.subplots(
             nrows, ncols, figsize=(12, 12), constrained_layout=True
