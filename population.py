@@ -4,20 +4,19 @@ import matplotlib.pyplot as plt
 
 class Population:
 
-    def __init__(self, individuals, num_parents=4):
+    def __init__(self, individuals):
         self.individuals = individuals
-        self.num_parents = num_parents
         self.fitness = []
         self.parents = []
 
     def evaluate(self):
         self.fitness = [individual.fitness() for individual in self.individuals]
 
-    def select_parents(self):
+    def select_parents(self, num_parents):
         sorted_individuals = sorted(
             self.individuals, key=lambda x: x.fitness(), reverse=True
         )
-        self.parents = sorted_individuals[: self.num_parents]
+        self.parents = sorted_individuals[:num_parents]
 
     def plot(self):
         fig, axes = plt.subplots(5, 5, figsize=(12, 12))

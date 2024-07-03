@@ -6,11 +6,21 @@ from animation import Animation
 
 
 class GeneticAlgorithm:
-    def __init__(self, population, num_generations=50):
+    def __init__(
+        self,
+        population,
+        num_generations=50,
+        num_parents=4,
+        mutation_probability=0.05,
+        animate=False,
+    ):
         self.population = population
         self.num_generations = num_generations
-        self.generations = []
-        self.animation = Animation()
+        self.num_parents = num_parents
+        self.mutation_probability = mutation_probability
+        self.animate = animate
+        if self.animate:
+            self.animation = Animation()
 
     def generate_offspring(self):
         new_population = []
@@ -51,7 +61,7 @@ class GeneticAlgorithm:
         """
         Mutation: Swap mutation
         """
-        if np.random.rand() < 0.05:  # Mutation probability
+        if np.random.rand() < self.mutation_probability:
             idx1, idx2 = np.random.randint(0, len(child.points), 2)
             child.points[idx1], child.points[idx2] = (
                 child.points[idx2],
@@ -60,15 +70,14 @@ class GeneticAlgorithm:
 
     def evolutionary_cycle(self, i):
         self.population.evaluate()
-        self.population.select_parents()
+        self.population.select_parents(self.num_parents)
         self.generate_offspring()
-        self.generations.append(self.population.individuals.copy())
-        # self.population.plot()
-        # plt.savefig(f'figures/generation-{i}.png')
-        self.animation.save_frame(self.population)
+        if self.animate:
+            self.animation.save_frame(self.population)
 
     def evolve(self):
         for i in range(self.num_generations):
             self.evolutionary_cycle(i)
 
-        self.animation.generate()
+        if self.animate:
+            self.animation.generate()
