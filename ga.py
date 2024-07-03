@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 from polygon import Polygon
+from animation import Animation
 
 
 class GeneticAlgorithm:
@@ -11,10 +12,10 @@ class GeneticAlgorithm:
         self.population = population
         self.num_generations = num_generations
         self.generations = []
+        self.animation = Animation()
 
     def generate_offspring(self):
         new_population = []
-
         for _ in range(len(self.population.individuals)):
             parent_a, parent_b = random.sample(self.population.parents, 2)
             child = self.crossover(parent_a, parent_b)
@@ -59,9 +60,17 @@ class GeneticAlgorithm:
                 child.points[idx1],
             )
 
+    def evolutionary_cycle(self, i):
+        self.population.evaluate()
+        self.population.select_parents()
+        self.generate_offspring()
+        self.generations.append(self.population.individuals.copy())
+        # self.population.plot()
+        # plt.savefig(f'figures/generation-{i}.png')
+        self.animation.save_frame(self.population)
+
     def evolve(self):
-        for generation in range(self.num_generations):
-            self.population.evaluate()
-            self.population.select_parents()
-            self.generate_offspring()
-            self.generations.append(self.population.individuals.copy())
+        for i in range(self.num_generations):
+            self.evolutionary_cycle(i)
+
+        self.animation.generate()

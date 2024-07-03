@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 class Polygon:
     def __init__(self, points):
         """
-        TODO: surely an attribute that defines how the points are connected is
-        needed? Or is the polygon defined by the order of the points?
+        The polygon is defined by the order of the points
         """
         self.points = points
 

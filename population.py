@@ -20,7 +20,8 @@ class Population:
         self.parents = sorted_individuals[: self.num_parents]
 
     def plot(self):
-        _, axes = plt.subplots(5, 5, figsize=(12, 12))
+        fig, axes = plt.subplots(5, 5, figsize=(12, 12))
         for individual, ax in zip(self.individuals, axes.flatten()):
             individual.plot(ax)
         plt.tight_layout()
+        return fig
