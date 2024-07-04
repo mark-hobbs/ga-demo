@@ -65,4 +65,4 @@ class Animation:
             interval=interval,
             blit=False,
         )
-        self.ani.save(self.name, writer=animation.PillowWriter(fps=1000/interval))
+        self.ani.save(self.name, writer=animation.PillowWriter(fps=1000 / interval))

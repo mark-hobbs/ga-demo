@@ -89,8 +89,8 @@ class GeneticAlgorithm:
     def plot_fitness(self):
         _, ax = plt.subplots(figsize=(8, 4))
         ax.plot(self.fitness)
-        ax.set_xlabel('Generation')
-        ax.set_ylabel('Fitness')
-        ax.set_title('Fitness Evolution')
+        ax.set_xlabel("Generation")
+        ax.set_ylabel("Fitness")
+        ax.set_title("Fitness Evolution")
         ax.grid(True)
         plt.tight_layout()

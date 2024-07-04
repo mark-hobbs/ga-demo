@@ -28,7 +28,4 @@ def main():
     ga.evolve()
 
 
-i = 0
-while i < 5:
-    main()
-    i += 1
+main()
