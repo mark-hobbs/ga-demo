@@ -1,5 +1,7 @@
 import random
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 from polygon import Polygon
 from animation import Animation
@@ -21,6 +23,7 @@ class GeneticAlgorithm:
         self.animate = animate
         if self.animate:
             self.animation = Animation()
+        self.fitness = []
 
     def generate_offspring(self):
         new_population = []
@@ -70,6 +73,7 @@ class GeneticAlgorithm:
 
     def evolutionary_cycle(self, i):
         self.population.evaluate()
+        self.fitness.append(max(self.population.fitness))
         self.population.select_parents(self.num_parents)
         self.generate_offspring()
         if self.animate:
@@ -81,3 +85,12 @@ class GeneticAlgorithm:
 
         if self.animate:
             self.animation.generate()
+
+    def plot_fitness(self):
+        _, ax = plt.subplots(figsize=(8, 4))
+        ax.plot(self.fitness)
+        ax.set_xlabel('Generation')
+        ax.set_ylabel('Fitness')
+        ax.set_title('Fitness Evolution')
+        ax.grid(True)
+        plt.tight_layout()
