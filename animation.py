@@ -36,7 +36,7 @@ class Animation:
             ax.axis("off")
             ax.set_aspect("equal")
 
-        self.fig.suptitle(f"Generation {frame}")
+        # self.fig.suptitle(f"Generation {frame}")
 
         for idx, (xdata, ydata) in enumerate(self.frames[frame]):
             ax_parent = self.ax[idx // ncols, idx % ncols]
@@ -47,9 +47,10 @@ class Animation:
 
         return self.ax.flat
 
-    def generate(self):
-        num_frames = len(self.frames)
+    def generate(self, interval=500, pause=5000):
         num_subplots = len(self.frames[0])
+        pause_frames = int(pause / interval)
+        self.frames.extend([self.frames[-1]] * pause_frames)
 
         ncols = 5
         nrows = (num_subplots + ncols - 1) // ncols
@@ -58,6 +59,10 @@ class Animation:
             nrows, ncols, figsize=(12, 12), constrained_layout=True
         )
         self.ani = animation.FuncAnimation(
-            self.fig, self._update, frames=num_frames, interval=200, blit=False
+            self.fig,
+            self._update,
+            frames=len(self.frames),
+            interval=interval,
+            blit=False,
         )
-        self.ani.save(self.name, writer=animation.PillowWriter(fps=5))
+        self.ani.save(self.name, writer=animation.PillowWriter(fps=1000/interval))
