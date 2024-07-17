@@ -6,6 +6,14 @@ This repository demonstrates a basic implementation of a Genetic Algorithm (GA).
 
 Given a set of points in 2D space, determine the polygon that maximises the ratio of its area to the square of its perimeter $(\text{Area}/\text{Perimeter}^2)$. This ratio serves as a measure of compactness, which is often desirable in various fields such as materials science, biology, and urban planning. Compact shapes can lead to more efficient designs, reduced material usage, and optimised spatial arrangements.
 
+## Example Solutions
+
+The following animations demonstrate the evolution of the polygon shapes over many generations.
+
+![Evolution Animation](figures/animation-1.gif)
+
+![Evolution Animation](figures/animation-2.gif)
+
 ## Usage
 
 ### 1. Generate random points
@@ -48,14 +56,6 @@ Run the genetic algorithm to evolve the population towards optimal solutions.
 ```python
 ga.evolve()
 ```
-
-## Example Solutions
-
-The following animations demonstrate the evolution of the polygon shapes over generations.
-
-![Evolution Animation](figures/animation-1.gif)
-
-![Evolution Animation](figures/animation-2.gif)
 
 ## License
 
