@@ -12,7 +12,11 @@ Given a set of points in 2D space, determine the polygon that maximises the rati
 
 The following animations demonstrate the evolution of the polygon shapes over many generations.
 
+**Example 1**
+
 ![Evolution Animation](figures/animation-1.gif)
+
+**Example 2**
 
 ![Evolution Animation](figures/animation-2.gif)
 
