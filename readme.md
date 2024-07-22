@@ -2,6 +2,8 @@
 
 This repository demonstrates a basic implementation of a Genetic Algorithm (GA).
 
+ <a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/examples/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 ## Problem statement
 
 Given a set of points in 2D space, determine the polygon that maximises the ratio of its area to the square of its perimeter $(\text{Area}/\text{Perimeter}^2)$. This ratio serves as a measure of compactness, which is often desirable in various fields such as materials science, biology, and urban planning. Compact shapes can lead to more efficient designs, reduced material usage, and optimised spatial arrangements.
@@ -77,6 +79,18 @@ Run the genetic algorithm to evolve the population towards optimal solutions.
 ```python
 ga.evolve()
 ```
+
+### 3. Run the genetic algorithm demonstration as a notebook
+
+Run the demonstration as a notebook to easily modify the parameters and explore their influence on the final results.
+
+```bash
+jupyter lab demo.ipynb
+```
+
+Or you can run the notebook using Google Colab: 
+
+<a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/examples/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ## License
 
