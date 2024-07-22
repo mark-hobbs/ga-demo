@@ -2,7 +2,7 @@
 
 This repository demonstrates a basic implementation of a Genetic Algorithm (GA).
 
- <a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/examples/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+ <a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ## Problem statement
 
@@ -90,7 +90,7 @@ jupyter lab demo.ipynb
 
 Or you can run the notebook using Google Colab: 
 
-<a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/examples/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://colab.research.google.com/github/mark-hobbs/ga-demo/blob/main/demo.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ## License
 
