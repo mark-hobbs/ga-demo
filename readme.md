@@ -6,7 +6,7 @@ This repository demonstrates a basic implementation of a Genetic Algorithm (GA).
 
 Given a set of points in 2D space, determine the polygon that maximises the ratio of its area to the square of its perimeter $(\text{Area}/\text{Perimeter}^2)$. This ratio serves as a measure of compactness, which is often desirable in various fields such as materials science, biology, and urban planning. Compact shapes can lead to more efficient designs, reduced material usage, and optimised spatial arrangements.
 
-## Example Solutions
+## Example solutions
 
 The following animations demonstrate the evolution of the polygon shapes over many generations.
 
@@ -16,7 +16,28 @@ The following animations demonstrate the evolution of the polygon shapes over ma
 
 ## Usage
 
-### 1. Generate random points
+### 1. Clone the repository and activate the virtual environment
+
+Clone the repository and install the necessary dependencies using `pipenv`.
+
+```bash
+git clone https://github.com/mark-hobbs/ga-demo.git
+cd ga-demo
+pipenv install
+pipenv shell
+```
+
+### 2. Run the genetic algorithm demonstration
+
+Execute the demo script to run the genetic algorithm and output an animation illustrating the evolution of the population towards optimal solutions.
+
+```bash
+python demo.py
+```
+
+`demo.py` contains the following logic. The values can be edited as desired:
+
+#### 1. Generate random points
 
 Start by generating 10 random points.
 
@@ -25,7 +46,7 @@ n_points = 10
 points = [Point(np.random.rand(), np.random.rand()) for _ in range(n_points)]
 ```
 
-### 2. Generate the initial population of polygons
+#### 2. Generate the initial population of polygons
 
 Create an initial population of 25 polygons using the generated points.
 
@@ -35,7 +56,7 @@ individuals = [Polygon(np.random.permutation(points)) for _ in range(population_
 population = Population(individuals)
 ```
 
-### 3. Initiate the Genetic Algorithm
+#### 3. Initiate the genetic algorithm
 
 Set up the Genetic Algorithm with the initial population, number of generations, number of parents, and mutation probability. You can also enable animation.
 
@@ -49,7 +70,7 @@ ga = GeneticAlgorithm(
 )
 ```
 
-### 4. Perform the Evolution
+#### 4. Perform the evolution
 
 Run the genetic algorithm to evolve the population towards optimal solutions.
 
