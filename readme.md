@@ -43,7 +43,7 @@ python demo.py
 
 `demo.py` contains the following logic. The values can be edited as desired:
 
-#### 1. Generate random points
+#### - Generate random points
 
 Start by generating 10 random points.
 
@@ -52,7 +52,7 @@ n_points = 10
 points = [Point(np.random.rand(), np.random.rand()) for _ in range(n_points)]
 ```
 
-#### 2. Generate the initial population of polygons
+#### - Generate the initial population of polygons
 
 Create an initial population of 25 polygons using the generated points.
 
@@ -62,7 +62,7 @@ individuals = [Polygon(np.random.permutation(points)) for _ in range(population_
 population = Population(individuals)
 ```
 
-#### 3. Initiate the genetic algorithm
+#### - Initiate the genetic algorithm
 
 Set up the Genetic Algorithm with the initial population, number of generations, number of parents, and mutation probability. You can also enable animation.
 
@@ -76,7 +76,7 @@ ga = GeneticAlgorithm(
 )
 ```
 
-#### 4. Perform the evolution
+#### - Perform the evolution
 
 Run the genetic algorithm to evolve the population towards optimal solutions.
 
