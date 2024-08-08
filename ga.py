@@ -1,9 +1,7 @@
 import random
-import numpy as np
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-
-from polygon import Polygon
 from animation import Animation
 
 
@@ -29,49 +27,13 @@ class GeneticAlgorithm:
         new_population = []
         for _ in range(len(self.population.individuals)):
             parent_a, parent_b = random.sample(self.population.parents, 2)
-            child = self.crossover(parent_a, parent_b)
-            self.mutation(child)
+            child = parent_a.crossover(parent_b)
+            child.mutate(self.mutation_probability)
             new_population.append(child)
 
         self.population.individuals = new_population
 
-    def crossover(self, parent_a, parent_b):
-        """
-        Partially mapped crossover (PMX)
-
-        Returns
-        -------
-        child
-        """
-        size = len(parent_a.points)
-        child = [-1] * size
-        a, b = sorted(np.random.choice(range(size), size=2, replace=False))
-
-        for i in range(a, b):
-            child[i] = parent_a.points[i]
-
-        for i in range(size):
-            if i < a or i >= b:
-                value = parent_b.points[i]
-                while value in child:
-                    idx = child.index(parent_a.points[child.index(value)])
-                    value = parent_b.points[idx]
-                child[i] = value
-
-        return Polygon(child)
-
-    def mutation(self, child):
-        """
-        Mutation: Swap mutation
-        """
-        if np.random.rand() < self.mutation_probability:
-            idx1, idx2 = np.random.randint(0, len(child.points), 2)
-            child.points[idx1], child.points[idx2] = (
-                child.points[idx2],
-                child.points[idx1],
-            )
-
-    def evolutionary_cycle(self, i):
+    def evolutionary_cycle(self):
         self.population.evaluate()
         self.fitness.append(max(self.population.fitness))
         self.population.select_parents(self.num_parents)
@@ -80,8 +42,8 @@ class GeneticAlgorithm:
             self.animation.save_frame(self.population)
 
     def evolve(self):
-        for i in range(self.num_generations):
-            self.evolutionary_cycle(i)
+        for _ in tqdm(range(self.num_generations), desc="Evolution"):
+            self.evolutionary_cycle()
 
         if self.animate:
             self.animation.generate()
