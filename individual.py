@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Individual:
     def __init__(self, genes):
         self.genes = genes
@@ -19,7 +20,7 @@ class Individual:
         if self._fitness is None:
             self.evaluate_fitness()
         return self._fitness
-    
+
     def crossover(self, partner):
         """
         Partially mapped crossover (PMX)

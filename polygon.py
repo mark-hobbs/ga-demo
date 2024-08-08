@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from individual import Individual
 
+
 class Polygon(Individual):
     def __init__(self, points):
         """
@@ -35,7 +36,7 @@ class Polygon(Individual):
         if perimeter == 0:
             return 0
         return area / (perimeter**2)
-    
+
     def crossover(self, partner):
         child_genes = super().crossover(partner)
         return Polygon(child_genes.genes)
