@@ -3,14 +3,20 @@ import matplotlib.pyplot as plt
 
 from individual import Individual
 
-
 class Polygon(Individual):
     def __init__(self, points):
         """
-        The polygon is defined by the order of the points
+        The polygon is defined by the order of the points.
         """
         super().__init__(points)
-        self.points = points
+
+    @property
+    def points(self):
+        return self.genes
+
+    @points.setter
+    def points(self, value):
+        self.genes = value
 
     def calculate_area(self):
         n = len(self.points)
@@ -36,14 +42,13 @@ class Polygon(Individual):
         if perimeter == 0:
             return 0
         return area / (perimeter**2)
-
+    
     def crossover(self, partner):
-        child_genes = super().crossover(partner)
-        return Polygon(child_genes.genes)
+        child = super().crossover(partner)
+        return Polygon(child.genes)
 
     def mutate(self, mutation_probability):
         super().mutate(mutation_probability)
-        self.points = self.genes  # Ensure 'points' stay consistent with 'genes'
 
     def plot(self, ax=None):
         if ax is None:
