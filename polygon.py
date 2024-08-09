@@ -44,8 +44,7 @@ class Polygon(Individual):
         return area / (perimeter**2)
     
     def crossover(self, partner):
-        child = super().crossover(partner)
-        return Polygon(child.genes)
+        return Polygon(super().crossover(partner))
 
     def mutate(self, mutation_probability):
         super().mutate(mutation_probability)

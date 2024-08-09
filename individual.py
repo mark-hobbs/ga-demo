@@ -49,7 +49,7 @@ class Individual:
                 child[i] = value
                 mapping[value] = i
 
-        return Individual(child)
+        return child
 
     def mutate(self, mutation_probability):
         """
