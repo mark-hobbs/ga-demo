@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -13,10 +12,9 @@ class Population:
         self.fitness = [individual.fitness() for individual in self.individuals]
 
     def select_parents(self, num_parents):
-        sorted_individuals = sorted(
+        self.parents = sorted(
             self.individuals, key=lambda x: x.fitness(), reverse=True
-        )
-        self.parents = sorted_individuals[:num_parents]
+        )[:num_parents]
 
     def plot(self):
         fig, axes = plt.subplots(5, 5, figsize=(12, 12))

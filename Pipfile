@@ -9,6 +9,7 @@ scipy = "*"
 matplotlib = "*"
 jupyterlab = "*"
 black = "*"
+tqdm = "*"
 
 [dev-packages]
 
